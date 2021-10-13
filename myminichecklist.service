@@ -1,0 +1,11 @@
+[Unit]
+Description=My Mini Checklist Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/myminichecklist
+WorkingDirectory=/opt/myminichecklist
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
