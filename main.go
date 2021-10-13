@@ -14,6 +14,7 @@ import (
 
 var (
 	flagAddr           = flag.String("addr", ":3000", "server listen addr")
+	flagDbPath         = flag.String("dbpath", "./store.db", "db folder")
 	flagSyncDbInterval = flag.Duration("bgsave", time.Duration(30*time.Second), "dump memory to file intervally")
 )
 
@@ -25,7 +26,7 @@ func main() {
 
 	router := newRouter()
 
-	storeDb, err := os.OpenFile("./db/store.db", os.O_RDWR|os.O_CREATE, 0644)
+	storeDb, err := os.OpenFile(*flagDbPath, os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
 		log.Fatalf("Storedb file not opened: %s", err.Error())
 		os.Exit(1)
@@ -70,7 +71,7 @@ func syncDb() {
 
 // NewServer returns a new Redcon server configured on "tcp" network net.
 func bgSave() {
-	tempFileName := fmt.Sprintf("./db/store.db-%d", rand.Intn(2000))
+	tempFileName := fmt.Sprintf("%s-%d", *flagDbPath, rand.Intn(2000))
 	storeDb, err := os.OpenFile(tempFileName, os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
 		log.Fatalln("Storedb file not opened")
@@ -85,7 +86,7 @@ func bgSave() {
 
 	storeDb.Close()
 
-	err = os.Rename(tempFileName, "./db/store.db")
+	err = os.Rename(tempFileName, *flagDbPath)
 	if err != nil {
 		log.Fatalln("Storedb rename process failed")
 	}
