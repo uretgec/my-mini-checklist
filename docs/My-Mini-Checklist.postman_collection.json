@@ -42,7 +42,7 @@
 								},
 								{
 									"key": "value",
-									"value": "11",
+									"value": "12",
 									"type": "text"
 								}
 							]
@@ -281,44 +281,34 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "GHealthChecks",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/healthcheck",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"healthcheck"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GApiLogs",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/logs",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"logs"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"response must be valid and have a body\", function () {",
+					"     pm.response.to.be.ok;",
+					"     pm.response.to.be.withBody;",
+					"     pm.response.to.be.json;",
+					"});"
+				]
+			}
 		}
 	]
 }
