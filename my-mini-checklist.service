@@ -3,8 +3,8 @@ Description=My Mini Checklist Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/myminichecklist
-WorkingDirectory=/opt/myminichecklist
+ExecStart=/usr/local/myminichecklist
+WorkingDirectory=/usr/local
 Restart=always
 
 [Install]
