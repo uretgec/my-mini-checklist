@@ -14,10 +14,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api",
+							"raw": "http://{{host}}:3000/api",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -48,10 +48,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/set",
+							"raw": "http://{{host}}:3000/api/set",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -68,10 +68,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/set?key=test&value=12",
+							"raw": "http://{{host}}:3000/api/set?key=test&value=12",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -108,10 +108,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/get",
+							"raw": "http://{{host}}:3000/api/get",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -128,10 +128,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/get?key=test",
+							"raw": "http://{{host}}:3000/api/get?key=test",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -164,10 +164,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/del",
+							"raw": "http://{{host}}:3000/api/del",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -184,10 +184,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/del?key=test",
+							"raw": "http://{{host}}:3000/api/del?key=test",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -210,10 +210,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/list",
+							"raw": "http://{{host}}:3000/api/list",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -230,10 +230,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/stats",
+							"raw": "http://{{host}}:3000/api/stats",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -250,10 +250,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/flush",
+							"raw": "http://{{host}}:3000/api/flush",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
 							"port": "3000",
 							"path": [
@@ -272,10 +272,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000",
+					"raw": "http://{{host}}:3000",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "3000"
 				}
@@ -288,10 +288,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/version",
+					"raw": "http://{{host}}:3000/version",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "3000",
 					"path": [
@@ -317,6 +317,8 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
+					"//pm.environment.set(\"host\", \"localhost\");",
+					"",
 					"pm.test(\"Status test\", function () {",
 					"    pm.response.to.have.status(200);",
 					"});",
