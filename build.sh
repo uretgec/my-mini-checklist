@@ -23,7 +23,7 @@ if [ -f "$SERVICE_NAME" ]; then
 
     chmod +x $SERVICE_NAME
 
-    mv $SERVICE_NAME ./build
+    mv -f $SERVICE_NAME ./build
     echo "$SERVICE_NAME file moved into build folder"
 
 else
