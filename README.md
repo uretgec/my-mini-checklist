@@ -79,12 +79,15 @@ Ready to use
 
 1. Postman collection file for all routes is ready to import. 
 
-    1. Pls go to docs folder and import "My-Mini-Checklist.postman_collection.json" file to Postman App in your computer
-    2. Run the "myminichecklist" server which deploy process you choose
-    3. Select "My-Mini-Checklist" collection folder in Postman App
-    4. Click the "Run" button (right up side the header)
+    1. Pls go to docs folder and import "My-Mini-Checklist.postman_collection.json" file to Postman App -> Collection Tab in your computer
+    2. Go to Postman App -> Enviroments tab. Import all environments "My-Mini-Checklist Dev Env.postman_environment.json", "My-Mini-Checklist Prod Env.postman_environment.json", "My Workspace.postman_globals.json" 
+    3. Run the "my-mini-checklist" server which deploy process you choose
+    4. Select "My-Mini-Checklist" collection folder in Postman App
+    5. Select "Prod or Dev Environment" (right up side the header)
+    6. Click the "Run" button (right up side the header)
+    7. Good lock
 
-> NOTE: Postman collection routes always request localhost:3000
+> NOTE: If not selected environment, Postman collections always request localhost:3000
 
 2. Run Go test command
 
