@@ -16,6 +16,7 @@ import (
 var (
 	flagAddr           = flag.String("addr", ":3000", "server listen addr")
 	flagDbPath         = flag.String("dbpath", "./store.db", "db file name with folder path")
+	flagBuildVersion   = flag.String("version", "1.0", "build version of service")
 	flagSyncDbInterval = flag.Duration("bgsave", time.Duration(30*time.Second), "dump memory to file periodly")
 )
 

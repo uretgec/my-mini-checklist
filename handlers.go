@@ -29,6 +29,14 @@ func home() http.Handler {
 	})
 }
 
+// Build Version Page Handler
+func buildVersion() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		json.NewEncoder(w).Encode(&ResultObj{resultSuccess, "Build version found", *flagBuildVersion})
+	})
+}
+
 // Api Home Page Handler
 func apiHome() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

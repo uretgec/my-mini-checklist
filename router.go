@@ -5,6 +5,7 @@ import "net/http"
 func newRouter() *http.ServeMux {
 	router := http.NewServeMux()
 	router.Handle("/", home())
+	router.Handle("/version", buildVersion())
 
 	router.Handle("/api", apiHome())
 	router.Handle("/api/set", apiStoreSet())

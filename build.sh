@@ -7,6 +7,7 @@
 # Local Variables
 ARGS=("$@")
 SERVICE_NAME="${ARGS[0]}"
+#SERVICE_VERSION="$(cat VERSION)"
 
 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o "$SERVICE_NAME"
 
@@ -15,9 +16,7 @@ if [ -f "$SERVICE_NAME" ]; then
 
     mv $SERVICE_NAME ./build
     echo "$SERVICE_NAME file moved into build folder"
-    
+
 else
     echo "Something wrong for building service"
 fi
-
-
