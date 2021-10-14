@@ -29,11 +29,5 @@ jobs:
       - name: Test
         run: go test -v --race ./...
 
-      - name: Move to exec file to correct directory
-        run: |
-          pwd
-          sudo mkdir -p /usr/local/my-mini-checklist
-          sudo cp -r my-mini-checklist/my-mini-checklist /usr/local/my-mini-checklist
-
-      - name: Service Restart
-        run: systemctl restart my-mini-checklist.service
+      - name: Check the folder path
+        run: pwd
