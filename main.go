@@ -16,8 +16,9 @@ import (
 var (
 	flagAddr           = flag.String("addr", ":3000", "server listen addr")
 	flagDbPath         = flag.String("dbpath", "./store.db", "db file name with folder path")
+	flagHttpLogPath    = flag.String("logpath", "./service-http.log", "db file name with folder path")
 	flagBuildVersion   = flag.String("version", "1.0", "build version of service")
-	flagSyncDbInterval = flag.Duration("bgsave", time.Duration(30*time.Second), "dump memory to file periodly")
+	flagSyncDbInterval = flag.Duration("bgsave", time.Duration(1*time.Minute), "dump memory to file periodly")
 )
 
 var store *Store
@@ -25,6 +26,16 @@ var store *Store
 func main() {
 	// Flags Parse: flagAddr, flagDbPath, flagSyncDbInterval
 	flag.Parse()
+
+	// logger init
+	logfile, err := os.OpenFile(*flagHttpLogPath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0640)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer logfile.Close()
+
+	rlogger := log.New(logfile, "http: ", log.LstdFlags)
 
 	// All routes
 	router := newRouter()
@@ -47,7 +58,7 @@ func main() {
 	// Http server options init
 	server := &http.Server{
 		Addr:         *flagAddr,
-		Handler:      Logging(QueryParams(router)),
+		Handler:      Logging(rlogger, QueryParams(router)),
 		ReadTimeout:  3 * time.Second,
 		WriteTimeout: 5 * time.Second,
 		IdleTimeout:  30 * time.Second,

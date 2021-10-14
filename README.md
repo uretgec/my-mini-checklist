@@ -15,7 +15,7 @@ How to make simple key value based checklist api with golang stdlib for not mast
 Without build
 
 ```
-go run . --addr :3000
+go run . --addr ":3000" --dbpath "./store.db" --bgsave 1m0s --logpath "./service-http.log"
 ```
 
 Open your browser and go to localhost:3000
@@ -55,7 +55,7 @@ Run the server with options
 ```
 cd build
 chmod +x myminichecklist
-./myminichecklist --addr ":3000" --dbpath "./store.db" --bgsave 500
+./myminichecklist --addr ":3000" --dbpath "./store.db" --bgsave 1m0s --logpath "./service-http.log"
 ```
 
 Open your browser and go to localhost:3000
