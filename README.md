@@ -4,11 +4,26 @@ How to make simple key value based checklist api with golang stdlib for not mast
 ## Feature
 - InMemory database (with bg save option).
 - Set, Get, GetAll, Del, Stats, Flush methods allowed.
-- POST and GET methods are equal. Use the methods which you prefer most. (i like to use it this way)
+- POST and GET methods are equal. Use the method which you prefer most. (i like to use it this way)
 - Logged all requests
 - Postman Collections, Docker, Local and DO Server build option is ready to use
 - No UI only restful api (Sorry)
 - Thats its all :)
+
+## Run Quickly
+
+Without build
+
+```
+go run . --addr :3000
+```
+
+Open your browser and go to localhost:3000
+```
+Welcome Home
+```
+
+Ready to use
 
 ## Installation
 
@@ -74,6 +89,10 @@ go test
 or more detail option:
 
 go test -v
+
+or 
+
+go test -v --race
 ```
 
 ## Licence
