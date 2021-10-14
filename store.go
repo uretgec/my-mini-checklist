@@ -15,6 +15,7 @@ func NewStore() *Store {
 	return &Store{Items: make(map[string]string)}
 }
 
+// Database sync from memory to db file if possible
 func (s *Store) Sync(db *os.File, firstTime bool) error {
 	if firstTime {
 		s.mu.RLock()
@@ -29,10 +30,12 @@ func (s *Store) Sync(db *os.File, firstTime bool) error {
 	return db.Sync()
 }
 
+// Database import from db file to memory if possible
 func (s *Store) Load(db *os.File) {
 	json.NewDecoder(db).Decode(&store.Items)
 }
 
+// Set new key and value
 func (s *Store) Set(key string, val string) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -40,6 +43,7 @@ func (s *Store) Set(key string, val string) {
 	s.Items[key] = val
 }
 
+// Get returns key value
 func (s *Store) Get(key string) string {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
@@ -52,6 +56,7 @@ func (s *Store) Get(key string) string {
 	return val
 }
 
+// Del key and value if key exists
 func (s *Store) Del(key string) {
 	s.mu.Lock()
 	if _, ok := s.Items[key]; ok {
@@ -60,6 +65,7 @@ func (s *Store) Del(key string) {
 	s.mu.Unlock()
 }
 
+// GetAll returns all keys and values
 func (s *Store) GetAll() map[string]string {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
@@ -67,6 +73,7 @@ func (s *Store) GetAll() map[string]string {
 	return s.Items
 }
 
+// Stats returns keys count
 func (s *Store) Stats() int {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -74,6 +81,7 @@ func (s *Store) Stats() int {
 	return len(s.Items)
 }
 
+// Flush database only inmemory
 func (s *Store) Flush() {
 	s.mu.Lock()
 	defer s.mu.Unlock()

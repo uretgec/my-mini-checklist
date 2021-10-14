@@ -5,11 +5,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"runtime/debug"
 	"strings"
 	"time"
 )
 
+// Logging middleware handler collects request data
 func Logging(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
@@ -18,6 +18,7 @@ func Logging(next http.Handler) http.Handler {
 	})
 }
 
+/*
 func PanicRecovery(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
@@ -28,8 +29,9 @@ func PanicRecovery(next http.Handler) http.Handler {
 		}()
 		next.ServeHTTP(w, r)
 	})
-}
+}*/
 
+// QueryParams middleware handler makes POST and GET methods equal
 func QueryParams(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 

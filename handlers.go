@@ -17,6 +17,7 @@ type ResultObj struct {
 	Result  interface{} `json:"result"`
 }
 
+// Home Page Handler
 func home() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -28,6 +29,7 @@ func home() http.Handler {
 	})
 }
 
+// Api Home Page Handler
 func apiHome() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -35,6 +37,7 @@ func apiHome() http.Handler {
 	})
 }
 
+// Api Set/Update Handler
 func apiStoreSet() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -58,6 +61,7 @@ func apiStoreSet() http.Handler {
 	})
 }
 
+// Api Get Handler
 func apiStoreGet() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -76,6 +80,7 @@ func apiStoreGet() http.Handler {
 	})
 }
 
+// Api Del Handler
 func apiStoreDel() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -95,6 +100,7 @@ func apiStoreDel() http.Handler {
 	})
 }
 
+// Api List Handler
 func apiStoreList() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -106,6 +112,7 @@ func apiStoreList() http.Handler {
 	})
 }
 
+// Api Stats Handler
 func apiStoreStats() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -116,6 +123,7 @@ func apiStoreStats() http.Handler {
 	})
 }
 
+// Api Flush Handler
 func apiStoreFlush() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
