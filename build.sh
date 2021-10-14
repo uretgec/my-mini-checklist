@@ -8,8 +8,15 @@
 ARGS=("$@")
 SERVICE_NAME="${ARGS[0]}"
 #SERVICE_VERSION="$(cat VERSION)"
+OS_TYPE="$(go env GOOS)"
+ARCH_TYPE="$(go env GOARCH)"
 
-GOOS=darwin GOARCH=amd64 go build -ldflags="-w -s" -o "$SERVICE_NAME"
+if [[ $# -eq 0 ]] ; then
+    echo "Service file name not found"
+    exit 1
+fi
+
+GOOS=$OS_TYPE GOARCH=$ARCH_TYPE go build -ldflags="-w -s" -o "$SERVICE_NAME"
 
 if [ -f "$SERVICE_NAME" ]; then
     echo "$SERVICE_NAME build successfully"
