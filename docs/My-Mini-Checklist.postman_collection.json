@@ -281,6 +281,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/version",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
