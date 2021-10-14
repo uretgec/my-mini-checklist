@@ -30,10 +30,16 @@ Ready to use
 Select below one of them for easy installation.
 
 1. Docker Build
+First Have to download and install Docker Desktop App
 
-First Have to download and install Docker Desktop App and after run the command
+If you want build image only
 ```
-docker-compose up
+docker build -t my-mini-checklist .
+```
+
+After run the command
+```
+docker-compose up --build
 ```
 
 Finish the install and only one container is up
@@ -46,16 +52,16 @@ Ready to use
 
 2. Local Build
 
-Run sh command for generate executable "myminichecklist" file to build folder
+Run sh command for generate executable "my-mini-checklist" file to build folder
 ```
-./build.sh 
+./build.sh my-mini-checklist
 ```
 
 Run the server with options
 ```
 cd build
-chmod +x myminichecklist
-./myminichecklist --addr ":3000" --dbpath "./store.db" --bgsave 1m0s --logpath "./service-http.log"
+chmod +x my-mini-checklist
+./my-mini-checklist --addr ":3000" --dbpath "./store.db" --bgsave 1m0s --logpath "./service-http.log"
 ```
 
 Open your browser and go to localhost:3000
