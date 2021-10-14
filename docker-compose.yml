@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  myminichecklist:
+    container_name: my-mini-checklist
+    image: my-mini-checklist:latest
+    restart: always
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - my-mini-checklist:/usr/local/my-mini-checklist/db
+
+volumes:
+  my-mini-checklist:
