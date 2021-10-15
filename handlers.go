@@ -11,13 +11,21 @@ const (
 	resultError   = "error"
 )
 
+// Response obj
+//
+// swagger:model ResultObj
 type ResultObj struct {
 	Status  string      `json:"status"`
 	Message string      `json:"message"`
 	Result  interface{} `json:"result"`
 }
 
+// swagger:operation GET / home Home
 // Home Page Handler
+// ---
+// responses:
+//	'200':
+//    description: Welcome
 func home() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -29,7 +37,12 @@ func home() http.Handler {
 	})
 }
 
+// swagger:operation GET /version version Version
 // Build Version Page Handler
+// ---
+// responses:
+//	'200':
+//    description: Version Number
 func buildVersion() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -37,7 +50,12 @@ func buildVersion() http.Handler {
 	})
 }
 
+// swagger:operation GET /api api ApiHome
 // Api Home Page Handler
+// ---
+// responses:
+//	'200':
+//    description: Welcome Api Home
 func apiHome() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -45,7 +63,21 @@ func apiHome() http.Handler {
 	})
 }
 
+// swagger:operation POST /api/set apiSet ApiSet
 // Api Set/Update Handler
+// ---
+// parameters:
+//	- name: key
+//	  description: Key name
+//	  required: true
+//	  type: string
+//	- name: value
+//	  description: Key value
+//	  required: true
+//	  type: string
+// responses:
+//	'200':
+//    description: Key updated successfully!
 func apiStoreSet() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 

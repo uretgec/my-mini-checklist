@@ -1,0 +1,58 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "My Mini Checklist: Simple key value based checklist api"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Home Page Handler",
+        "tags": [
+          "home"
+        ],
+        "operationId": "Home"
+      }
+    },
+    "/api": {
+      "get": {
+        "description": "Api Home Page Handler",
+        "tags": [
+          "api"
+        ],
+        "operationId": "ApiHome"
+      }
+    },
+    "/api/set": {
+      "post": {
+        "description": "Api Set/Update Handler",
+        "tags": [
+          "apiSet"
+        ],
+        "operationId": "ApiSet",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Key name",
+            "name": "key",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Key value",
+            "name": "value",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/version": {
+      "get": {
+        "description": "Build Version Page Handler",
+        "tags": [
+          "version"
+        ],
+        "operationId": "Version"
+      }
+    }
+  }
+}

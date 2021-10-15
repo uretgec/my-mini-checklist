@@ -106,3 +106,14 @@ go test -v --race
 
 ## Licence
 Distributed under the MIT License. See LICENSE for more details.
+
+
+# Swagger UI
+
+```
+./swagger generate spec -o /path/docs/swagger.json -w /path
+```
+
+```
+./swagger serve -F swagger /path/docs/swagger.json 
+```
