@@ -1,30 +1,79 @@
 {
+  "consumes": [
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
   "swagger": "2.0",
   "info": {
-    "description": "My Mini Checklist: Simple key value based checklist api"
+    "description": "How to make simple key value based checklist api with golang stdlib for not master users?",
+    "title": "My Mini Checklist Api",
+    "contact": {
+      "name": "Uretgec",
+      "email": "iletisim@uretgec.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.3"
   },
+  "host": "localhost:3000",
+  "basePath": "/",
   "paths": {
     "/": {
       "get": {
         "description": "Home Page Handler",
+        "produces": [
+          "application/json"
+        ],
         "tags": [
           "home"
         ],
-        "operationId": "Home"
+        "operationId": "Home",
+        "responses": {
+          "200": {
+            "description": "Welcome",
+            "schema": {
+              "$ref": "#/responses/ResultObj"
+            }
+          }
+        }
       }
     },
     "/api": {
       "get": {
         "description": "Api Home Page Handler",
+        "produces": [
+          "application/json"
+        ],
         "tags": [
           "api"
         ],
-        "operationId": "ApiHome"
+        "operationId": "ApiHome",
+        "responses": {
+          "200": {
+            "description": "Welcome Api Home",
+            "schema": {
+              "$ref": "#/responses/ResultObj"
+            }
+          }
+        }
       }
     },
     "/api/set": {
       "post": {
         "description": "Api Set/Update Handler",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "tags": [
           "apiSet"
         ],
@@ -32,26 +81,68 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Key name",
+            "default": "test",
+            "x-go-name": "Key",
+            "description": "Name of key",
             "name": "key",
+            "in": "formData",
             "required": true
           },
           {
             "type": "string",
-            "description": "Key value",
+            "default": "12",
+            "x-go-name": "Value",
+            "description": "Value of key",
             "name": "value",
+            "in": "formData",
             "required": true
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "Key updated successfully!",
+            "schema": {
+              "$ref": "#/responses/ResultObj"
+            }
+          }
+        }
       }
     },
     "/version": {
       "get": {
         "description": "Build Version Page Handler",
+        "produces": [
+          "application/json"
+        ],
         "tags": [
           "version"
         ],
-        "operationId": "Version"
+        "operationId": "Version",
+        "responses": {
+          "200": {
+            "description": "Version Number",
+            "schema": {
+              "$ref": "#/responses/ResultObj"
+            }
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "ResultObj": {
+      "description": "Response obj",
+      "schema": {
+        "type": "object"
+      },
+      "headers": {
+        "message": {
+          "type": "string"
+        },
+        "result": {},
+        "status": {
+          "type": "string"
+        }
       }
     }
   }

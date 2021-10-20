@@ -1,4 +1,21 @@
-// My Mini Checklist: Simple key value based checklist api
+// My Mini Checklist Api
+//
+// How to make simple key value based checklist api with golang stdlib for not master users?
+//
+//	Schemes: http
+//	Host: localhost:3000
+//	BasePath: /
+//	Version: 1.0.3
+//	License: MIT http://opensource.org/licenses/MIT
+//	Contact: Uretgec<iletisim@uretgec.com>
+//
+//	Consumes:
+//	- application/x-www-form-urlencoded
+//
+//	Produces:
+//	- application/json
+//
+// swagger:meta
 package main
 
 import (
@@ -23,24 +40,6 @@ var (
 
 var store *Store
 
-// My Mini Checklist Api
-//
-// How to make simple key value based checklist api with golang stdlib for not master users?
-//
-//	Schemes: http
-//	Host: localhost:3000
-//	BasePath: /
-//	Version: 1.0.3
-//	License: MIT http://opensource.org/licenses/MIT
-//	Contact: Uretgec<iletisim@uretgec.com>
-//
-//	Consumes:
-//	- application/x-www-form-urlencoded
-//
-//	Produces:
-//	- application/json
-//
-// swagger:meta
 func main() {
 	// Flags Parse: flagAddr, flagDbPath, flagSyncDbInterval
 	flag.Parse()

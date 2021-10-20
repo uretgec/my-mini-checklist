@@ -11,9 +11,25 @@ const (
 	resultError   = "error"
 )
 
+// Request Obj
+//
+// swagger:parameters ApiSet
+type RequestObj struct {
+
+	// in: formData
+	// required: true
+	// default: test
+	Key string `json:"key"`
+
+	// in: formData
+	// required: true
+	// default: 12
+	Value string `json:"value"`
+}
+
 // Response obj
 //
-// swagger:model ResultObj
+// swagger:response ResultObj
 type ResultObj struct {
 	Status  string      `json:"status"`
 	Message string      `json:"message"`
@@ -23,9 +39,13 @@ type ResultObj struct {
 // swagger:operation GET / home Home
 // Home Page Handler
 // ---
+// produces:
+//  - application/json
 // responses:
-//	'200':
-//    description: Welcome
+//	 '200':
+//     description: Welcome
+//     schema:
+//	     "$ref": "#/responses/ResultObj"
 func home() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -40,9 +60,13 @@ func home() http.Handler {
 // swagger:operation GET /version version Version
 // Build Version Page Handler
 // ---
+// produces:
+//  - application/json
 // responses:
-//	'200':
-//    description: Version Number
+//	 '200':
+//     description: Version Number
+//     schema:
+//	     "$ref": "#/responses/ResultObj"
 func buildVersion() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -53,9 +77,13 @@ func buildVersion() http.Handler {
 // swagger:operation GET /api api ApiHome
 // Api Home Page Handler
 // ---
+// produces:
+//  - application/json
 // responses:
-//	'200':
-//    description: Welcome Api Home
+//	 '200':
+//     description: Welcome Api Home
+//     schema:
+//	     "$ref": "#/responses/ResultObj"
 func apiHome() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -66,18 +94,24 @@ func apiHome() http.Handler {
 // swagger:operation POST /api/set apiSet ApiSet
 // Api Set/Update Handler
 // ---
+// consumes:
+//  - application/x-www-form-urlencoded
+// produces:
+//  - application/json
 // parameters:
 //	- name: key
-//	  description: Key name
+//	  description: Name of key
 //	  required: true
 //	  type: string
 //	- name: value
-//	  description: Key value
+//	  description: Value of key
 //	  required: true
 //	  type: string
 // responses:
-//	'200':
-//    description: Key updated successfully!
+//	 '200':
+//     description: Key updated successfully!
+//     schema:
+//	     "$ref": "#/responses/ResultObj"
 func apiStoreSet() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
