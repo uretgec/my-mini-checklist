@@ -37,10 +37,7 @@
         "operationId": "Home",
         "responses": {
           "200": {
-            "description": "Welcome",
-            "schema": {
-              "$ref": "#/responses/ResultObj"
-            }
+            "description": "Welcome"
           }
         }
       }
@@ -57,10 +54,7 @@
         "operationId": "ApiHome",
         "responses": {
           "200": {
-            "description": "Welcome Api Home",
-            "schema": {
-              "$ref": "#/responses/ResultObj"
-            }
+            "description": "Welcome Api Home"
           }
         }
       }
@@ -100,10 +94,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Key updated successfully!",
-            "schema": {
-              "$ref": "#/responses/ResultObj"
-            }
+            "description": "Key updated successfully!"
           }
         }
       }
@@ -120,10 +111,7 @@
         "operationId": "Version",
         "responses": {
           "200": {
-            "description": "Version Number",
-            "schema": {
-              "$ref": "#/responses/ResultObj"
-            }
+            "description": "Version Number"
           }
         }
       }

@@ -44,8 +44,6 @@ type ResultObj struct {
 // responses:
 //	 '200':
 //     description: Welcome
-//     schema:
-//	     "$ref": "#/responses/ResultObj"
 func home() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -65,8 +63,6 @@ func home() http.Handler {
 // responses:
 //	 '200':
 //     description: Version Number
-//     schema:
-//	     "$ref": "#/responses/ResultObj"
 func buildVersion() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -82,8 +78,6 @@ func buildVersion() http.Handler {
 // responses:
 //	 '200':
 //     description: Welcome Api Home
-//     schema:
-//	     "$ref": "#/responses/ResultObj"
 func apiHome() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -110,8 +104,6 @@ func apiHome() http.Handler {
 // responses:
 //	 '200':
 //     description: Key updated successfully!
-//     schema:
-//	     "$ref": "#/responses/ResultObj"
 func apiStoreSet() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
