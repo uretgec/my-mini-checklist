@@ -92,8 +92,9 @@ func main() {
 
 	// Listen server quit or something happened and notify channel
 	// And sync memory data to file database
+	// https://pkg.go.dev/os/signal - The signals SIGKILL and SIGSTOP may not be caught by a program, and therefore cannot be affected by this package.
 	c := make(chan os.Signal, 1)
-	signal.Notify(c, syscall.SIGINT, syscall.SIGKILL, syscall.SIGTERM)
+	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 
 	<-c
 	bgSave()
@@ -102,7 +103,7 @@ func main() {
 // Periodly sync from in-memory data to flat file
 func syncDb() {
 	syncTicker := time.NewTicker(*flagSyncDbInterval)
-	for _ = range syncTicker.C {
+	for range syncTicker.C {
 		bgSave()
 	}
 }

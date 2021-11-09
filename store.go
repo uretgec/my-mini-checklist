@@ -59,9 +59,7 @@ func (s *Store) Get(key string) string {
 // Del key and value if key exists
 func (s *Store) Del(key string) {
 	s.mu.Lock()
-	if _, ok := s.Items[key]; ok {
-		delete(s.Items, key)
-	}
+	delete(s.Items, key)
 	s.mu.Unlock()
 }
 
